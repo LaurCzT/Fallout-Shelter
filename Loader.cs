@@ -3,6 +3,7 @@ using Shelter.DwellerOpt;
 using Shelter.EventOpt;
 using Shelter.InventoryOpt;
 using Shelter.VaultOpt;
+using Shelter.LunchBoxOpt;
 
 namespace Shelter
 {
@@ -22,6 +23,7 @@ namespace Shelter
             _loadObject.AddComponent<EventOptions>();
             _loadObject.AddComponent<InventoryOptions>();
             _loadObject.AddComponent<VaultOptions>();
+            _loadObject.AddComponent<LunchboxOptions>();
 
 
             Object.DontDestroyOnLoad(_loadObject);

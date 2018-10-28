@@ -3,6 +3,7 @@ using Shelter.DwellerOpt;
 using Shelter.EventOpt;
 using Shelter.InventoryOpt;
 using Shelter.VaultOpt;
+using Shelter.LunchBoxOpt;
 
 namespace Shelter
 {
@@ -20,7 +21,7 @@ namespace Shelter
         public bool EventVisible = false;
         public bool InventoryVisble = false;
         public bool VaultVisible = false;
-        public bool PetsVisible = false;
+        public bool LunchBoxVisible = false;
 
         /// <summary>
         /// 
@@ -94,9 +95,9 @@ namespace Shelter
                 _window5 = GUILayout.Window(4, _window5, new GUI.WindowFunction(DrawVaultOptions), "Vault Options", new GUILayoutOption[0]);
             }
 
-            if (PetsVisible)
+            if (LunchBoxVisible)
             {
-                _window6 = GUILayout.Window(5, _window6, new GUI.WindowFunction(DrawPetsOptions), "Pet Options", new GUILayoutOption[0]);
+                _window6 = GUILayout.Window(5, _window6, new GUI.WindowFunction(DrawLunchBoxOptions), "Pet Options", new GUILayoutOption[0]);
             }
 
         }
@@ -125,16 +126,22 @@ namespace Shelter
 
             if (GUILayout.Button("Inventory Options", new GUILayoutOption[0]))
             {
-                _window4.x = _window3.width + 60f;
-                _window4.y = _window3.width + 40f;
+                _window4.x = _window3.width + 80f;
                 InventoryVisble = !InventoryVisble;
             }
 
             if (GUILayout.Button("Vault Options", new GUILayoutOption[0]))
             {
-                _window5.x = _window4.width + 80f;
+                _window5.x = _window4.width + 20f;
                 _window5.y = _window4.width + 40f;
                 VaultVisible = !VaultVisible;
+            }
+
+            if (GUILayout.Button("Lunchbox Options", new GUILayoutOption[0]))
+            {
+                _window5.x = _window4.width + 80f;
+                _window5.y = _window4.width + 40f;
+                LunchBoxVisible = !LunchBoxVisible;
             }
 
             GUILayout.Space(5f);
@@ -353,13 +360,33 @@ namespace Shelter
             GUI.DragWindow();
         }
 
-        Vector2 scrollPosition;
-
-        private void DrawPetsOptions(int id)
+        private void DrawLunchBoxOptions(int id)
         {
+            if (GUILayout.Button("Add 1 Regular Luncbox", new GUILayoutOption[0]))
+            {
+                LunchboxOptions.AddLunchBox();
+            }
 
+            if (GUILayout.Button("Add 10 Regular Lunchboxes", new GUILayoutOption[0]))
+            {
+                LunchboxOptions.AddMultipleLunchBox();
+            }
 
-            GUILayout.EndScrollView();
+            if (GUILayout.Button("Add 1 LunchBox Mr.Handy", new GUILayoutOption[0]))
+            {
+                LunchboxOptions.AddLunchBoxMrHandy();
+            }
+
+            if (GUILayout.Button("Add 1 Pet Carrier LunchBox", new GUILayoutOption[0]))
+            {
+                LunchboxOptions.AddLunchBoxPet();
+            }
+
+            if (GUILayout.Button("Add 1 Starter Lunchbox", new GUILayoutOption[0]))
+            {
+                LunchboxOptions.AddLunchBoxStarter();
+            }
+
             GUI.DragWindow();
         }
     }

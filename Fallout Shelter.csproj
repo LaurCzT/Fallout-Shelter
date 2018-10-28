@@ -222,6 +222,7 @@
     <Compile Include="Event\EventOptions.cs" />
     <Compile Include="Inventory\InventoryOptions.cs" />
     <Compile Include="Loader.cs" />
+    <Compile Include="LunchBox\LunchboxOptions.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Options.cs" />
