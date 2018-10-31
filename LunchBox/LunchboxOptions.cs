@@ -16,17 +16,6 @@ namespace Shelter.LunchBoxOpt
         }
 
         /// <summary>
-        /// Adding 10 regular lunchbox
-        /// </summary>
-        public static void AddMultipleLunchBox()
-        {
-            if (MonoSingleton<Vault>.IsInstanceValid)
-            {
-                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.Regular, 10);
-            }
-        }
-
-        /// <summary>
         /// Adding Mr. Handy LunchBox
         /// </summary>
         public static void AddLunchBoxMrHandy()
