@@ -367,11 +367,6 @@ namespace Shelter
                 LunchboxOptions.AddLunchBox();
             }
 
-            if (GUILayout.Button("Add 10 Regular Lunchboxes", new GUILayoutOption[0]))
-            {
-                LunchboxOptions.AddMultipleLunchBox();
-            }
-
             if (GUILayout.Button("Add 1 LunchBox Mr.Handy", new GUILayoutOption[0]))
             {
                 LunchboxOptions.AddLunchBoxMrHandy();
