@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using Shelter.DwellerOpt;
 using Shelter.EventOpt;
 using Shelter.InventoryOpt;
@@ -9,6 +10,18 @@ namespace Shelter
 {
     public class Menu : MonoBehaviour
     {
+        /*
+        public float hideTextDuration;
+        // private bool shouldCheckInput = true;
+        private bool shouldShowText = true;
+
+        private IEnumerator WaitAndMakeTextDisappear(float waitTimeInSeconds)
+        {
+            yield return new WaitForSeconds(2);
+            shouldShowText = true;
+        }
+        */
+
         private Rect _window;
         private Rect _window2;
         private Rect _window3;
@@ -58,13 +71,10 @@ namespace Shelter
 
         private void Update()
         {
-
             ToggleMenu();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+
         private void OnGUI()
         {
 
@@ -166,10 +176,29 @@ namespace Shelter
             }
             Options.AlwaysHappy = GUILayout.Toggle(Options.AlwaysHappy, "Always Happy", new GUILayoutOption[0]);
 
+            if(Options.SetDwellerMaxHealth)
+            {
+                DwellerOptions.DwellersMaxHealth();
+            }
+            Options.SetDwellerMaxHealth = GUILayout.Toggle(Options.SetDwellerMaxHealth, "Set Dwellers Health to max", new GUILayoutOption[0]);
+
+            if (Options.SetBiggerCriticalHitMeter)
+            {
+                DwellerOptions.BiggerCriticalHitMeter();
+            }
+            Options.SetBiggerCriticalHitMeter = GUILayout.Toggle(Options.SetBiggerCriticalHitMeter, "Set Larger Critical Hit Meter", new GUILayoutOption[0]);
+
+            if (Options.SetHigherCriticalHit)
+            {
+                DwellerOptions.HigherCriticalHit();
+            }
+            Options.SetHigherCriticalHit = GUILayout.Toggle(Options.SetHigherCriticalHit, "Set Critical Hit to 5000", new GUILayoutOption[0]);
+
             GUILayout.Space(+10f);
 
-            if (GUILayout.Button("Level Up all Dwellers", new GUILayoutOption[0]))
+            if (GUILayout.Button("Level Up all Dwellers", new GUILayoutOption[0]) )
             {
+                //GUI.Label(new Rect(20, Screen.height / 2f - 7f, 200, 60), "Level up all Dwellers Clicked");
                 DwellerOptions.LevelUpAllDwellers();
             }
 
@@ -208,6 +237,20 @@ namespace Shelter
                 DwellerOptions.SpawnLegendaryDweller();
             }
 
+            GUILayout.Space(+15f);
+
+            Options.EnableSpeedDwellers = GUILayout.Toggle(Options.EnableSpeedDwellers, "Enable Speedhack for Dwellers", new GUILayoutOption[0]);
+
+            GUILayout.Space(+5f);
+
+            Options.SetDwellerRunningSpeed = GUILayout.Toggle(Options.SetDwellerRunningSpeed, "Set Speed For Running Dwellers {0}", new GUILayoutOption[0]);
+            Options.RunningSpeedMultiplier = Mathf.Round(GUILayout.HorizontalSlider(Options.RunningSpeedMultiplier, 1.3f, 50f, new GUILayoutOption[0]) * 50f) / 50f;
+
+            GUILayout.Space(+5f);
+
+            Options.SetDwellerWalkingSpeed = GUILayout.Toggle(Options.SetDwellerWalkingSpeed, "Set Speed For Walking Dwellers {0}", new GUILayoutOption[0]);
+            Options.WalkingSpeedMultiplier = Mathf.Round(GUILayout.HorizontalSlider(Options.WalkingSpeedMultiplier, 4f, 50f, new GUILayoutOption[0]) * 50f) / 50f;
+
             GUI.DragWindow();
         }
 
@@ -217,7 +260,7 @@ namespace Shelter
         /// <param name="id"></param>
         private void DrawEventOptions(int id)
         {
-            if (Options.NoRandomEvent)
+            if(Options.NoRandomEvent)
             {
                 EventOptions.NoRandomEvents();
             }
@@ -237,7 +280,6 @@ namespace Shelter
             {
                 EventOptions.StartDeathClawAttack();
             }
-
             GUI.DragWindow();
         }
 
@@ -247,9 +289,9 @@ namespace Shelter
         /// <param name="id"></param>
         private void DrawInventoryOptions(int id)
         {
-            if (Options.SetVaultMaxStorage)
+            if(Options.SetVaultMaxStorage)
             {
-                InventoryOptions.SetVaultStorage();
+                InventoryOptions.SetVaultStorage(9000);
             }
             Options.SetVaultMaxStorage = GUILayout.Toggle(Options.SetVaultMaxStorage, "Set storage max 9000", new GUILayoutOption[0]);
 
@@ -309,37 +351,37 @@ namespace Shelter
         {
             if (GUILayout.Button("Set Energy to 5000", new GUILayoutOption[0]))
             {
-                VaultOptions.InfiniteEnergy();
+                VaultOptions.InfiniteEnergy(5000);
             }
 
             if (GUILayout.Button("Set Food to 5000", new GUILayoutOption[0]))
             {
-                VaultOptions.InfiniteFood();
+                VaultOptions.InfiniteFood(5000);
             }
 
             if (GUILayout.Button("Set Water to 5000", new GUILayoutOption[0]))
             {
-                VaultOptions.InfiniteWater();
+                VaultOptions.InfiniteWater(5000);
             }
 
             if (GUILayout.Button("Add 5000 Nuka Cola", new GUILayoutOption[0]))
             {
-                VaultOptions.AddNukaCola();
+                VaultOptions.AddNukaCola(5000);
             }
 
             if (GUILayout.Button("Add 100 Nuka Cola Quantum", new GUILayoutOption[0]))
             {
-                VaultOptions.AddNukaColaQuantum();
+                VaultOptions.AddNukaColaQuantum(100);
             }
 
             if (GUILayout.Button("Add 50 RedAway", new GUILayoutOption[0]))
             {
-                VaultOptions.AddRedAway();
+                VaultOptions.AddRedAway(50);
             }
 
             if (GUILayout.Button("Add 50 Stimpack", new GUILayoutOption[0]))
             {
-                VaultOptions.AddStimPack();
+                VaultOptions.AddStimPack(50);
             }
 
             if (GUILayout.Button("Unlock Every Room", new GUILayoutOption[0]))
@@ -354,7 +396,7 @@ namespace Shelter
 
             if (GUILayout.Button("Set Max Dwellers to 9000", new GUILayoutOption[0]))
             {
-                VaultOptions.SetDwellersToThousand();
+                VaultOptions.SetDwellersToThousand(9000);
             }
 
             GUI.DragWindow();
@@ -364,27 +406,22 @@ namespace Shelter
         {
             if (GUILayout.Button("Add 1 Regular Luncbox", new GUILayoutOption[0]))
             {
-                LunchboxOptions.AddLunchBox();
-            }
-
-            if (GUILayout.Button("Add 10 Regular Lunchboxes", new GUILayoutOption[0]))
-            {
-                LunchboxOptions.AddMultipleLunchBox();
+                LunchboxOptions.AddLunchBox(1);
             }
 
             if (GUILayout.Button("Add 1 LunchBox Mr.Handy", new GUILayoutOption[0]))
             {
-                LunchboxOptions.AddLunchBoxMrHandy();
+                LunchboxOptions.AddLunchBoxMrHandy(1);
             }
 
             if (GUILayout.Button("Add 1 Pet Carrier LunchBox", new GUILayoutOption[0]))
             {
-                LunchboxOptions.AddLunchBoxPet();
+                LunchboxOptions.AddLunchBoxPet(1);
             }
 
             if (GUILayout.Button("Add 1 Starter Lunchbox", new GUILayoutOption[0]))
             {
-                LunchboxOptions.AddLunchBoxStarter();
+                LunchboxOptions.AddLunchBoxStarter(1);
             }
 
             GUI.DragWindow();

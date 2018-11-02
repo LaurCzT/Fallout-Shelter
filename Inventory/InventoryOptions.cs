@@ -10,11 +10,11 @@ namespace Shelter.InventoryOpt
         /// <summary>
         /// Sets the vault max storage to 9000.
         /// </summary>
-        public static void SetVaultStorage()
+        public static void SetVaultStorage(int amount)
         {
-            if (MonoSingleton<Vault>.IsInstanceValid)
+            if (MonoSingleton<Vault>.IsInstanceValid && Options.SetVaultMaxStorage)
             {
-                MonoSingleton<Vault>.Instance.Inventory.SetMaxItems(9000);
+                MonoSingleton<Vault>.Instance.Inventory.SetMaxItems(amount);
             }
         }
 

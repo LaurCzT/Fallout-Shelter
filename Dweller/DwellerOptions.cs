@@ -4,6 +4,7 @@ namespace Shelter.DwellerOpt
 {
     public class DwellerOptions : MonoBehaviour
     {
+
         private int baseHappiness;
 
         /// <summary>
@@ -11,7 +12,7 @@ namespace Shelter.DwellerOpt
         /// </summary>
         public static void AlwaysHappy()
         {
-            if (MonoSingleton<DwellerManager>.IsInstanceValid)
+            if (MonoSingleton<DwellerManager>.IsInstanceValid && Options.AlwaysHappy)
             {
                 foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
                 {
@@ -129,6 +130,117 @@ namespace Shelter.DwellerOpt
             {
                 MonoSingleton<DwellerSpawner>.Instance.CreateWaitingDweller(EGender.Any, false, 0, EDwellerRarity.Legendary);
             }
+        }
+
+        /// <summary>
+        /// Sets our dwellers to max health
+        /// </summary>
+        public static void DwellersMaxHealth()
+        {
+            if (MonoSingleton<DwellerManager>.IsInstanceValid && Options.SetDwellerMaxHealth)
+            {
+                foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
+                {
+                    person.ChangeHealth(person.Health.HealthMax);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the dweller damage.
+        /// </summary>
+        public static void SetDwellerDamage()
+        {
+            if (MonoSingleton<DwellerManager>.IsInstanceValid)
+            {
+                foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
+                {
+                    
+                }
+            }
+        }
+
+        /// <summary>
+        /// Increase the critical hit meter
+        /// </summary>
+        public static void BiggerCriticalHitMeter()
+        {
+            if (MonoSingleton<DwellerManager>.IsInstanceValid && Options.SetBiggerCriticalHitMeter)
+            {
+                foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
+                {
+                    person.IncreaseCriticalHitMeter();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets Dweller critical hit to 5000
+        /// </summary>
+         public static void HigherCriticalHit()
+         {
+            if (MonoSingleton<DwellerManager>.IsInstanceValid && Options.SetHigherCriticalHit)
+            {
+                foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
+                {
+                    person.PerformCriticalHit(5000);
+                }
+            }
+         }
+
+        private float baseWalkSpeed = 1.3f;
+        private float baseRunningSpeed = 4f;
+
+        /// <summary>
+        /// Starts this instance.
+        /// </summary>
+        private void Start()
+        {
+            if (MonoSingleton<DwellerManager>.IsInstanceValid)
+            {
+                foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
+                {
+                    baseRunningSpeed = person.m_runningSpeed;
+                    baseWalkSpeed = person.m_walkingSpeed;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates this instance.
+        /// </summary>
+        private void Update()
+        {
+            if (MonoSingleton<DwellerManager>.IsInstanceValid && Options.EnableSpeedDwellers)
+            {
+                foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
+                {
+                    if (Options.SetDwellerRunningSpeed)
+                    {
+                        person.m_runningSpeed = baseRunningSpeed * Options.RunningSpeedMultiplier;
+                    }
+                    else
+                    {
+                        baseRunningSpeed = person.m_runningSpeed;
+                    }
+                }
+            }
+
+            if (MonoSingleton<DwellerManager>.IsInstanceValid && Options.EnableSpeedDwellers)
+            {
+                foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
+                {
+                    if (Options.SetDwellerWalkingSpeed)
+                    {
+                        person.m_walkingSpeed = baseWalkSpeed * Options.WalkingSpeedMultiplier;
+                    }
+                    else
+                    {
+                        baseWalkSpeed = person.m_walkingSpeed;
+                    }
+                }
+            }
+
         }
 
     }

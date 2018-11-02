@@ -9,7 +9,7 @@ namespace Shelter.EventOpt
         /// </summary>
         public static void NoRandomEvents()
         {
-            if (MonoSingleton<Vault>.IsInstanceValid)
+            if (MonoSingleton<Vault>.IsInstanceValid && Options.NoRandomEvent)
             {
                 MonoSingleton<Vault>.Instance.EmergencyState.Clean();
             }
@@ -47,5 +47,18 @@ namespace Shelter.EventOpt
                 MonoSingleton<Vault>.Instance.EmergencyState.DeathclawMgr.BeginAttack();
             }
         }
+
+        /*
+        /// <summary>
+        /// Start a DeathClaw attack on the vault
+        /// </summary>
+        public static void StartEmergency()
+        {
+            if (MonoSingleton<Vault>.IsInstanceValid)
+            {
+                MonoSingleton<Vault>.Instance.EmergencyState.ForceStartEmergencyInRoom(Room room)
+            }
+        }
+        */
     }
 }

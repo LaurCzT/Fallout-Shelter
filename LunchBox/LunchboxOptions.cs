@@ -7,55 +7,44 @@ namespace Shelter.LunchBoxOpt
         /// <summary>
         /// Adding one regular lunchbox
         /// </summary>
-        public static void AddLunchBox()
+        public static void AddLunchBox(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.Regular, 1);
-            }
-        }
-
-        /// <summary>
-        /// Adding 10 regular lunchbox
-        /// </summary>
-        public static void AddMultipleLunchBox()
-        {
-            if (MonoSingleton<Vault>.IsInstanceValid)
-            {
-                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.Regular, 10);
+                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.Regular, amount);
             }
         }
 
         /// <summary>
         /// Adding Mr. Handy LunchBox
         /// </summary>
-        public static void AddLunchBoxMrHandy()
+        public static void AddLunchBoxMrHandy(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.MrHandy, 1);
+                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.MrHandy, amount);
             }
         }
 
         /// <summary>
         /// Adding Pet Carrier Lunchbox
         /// </summary>
-        public static void AddLunchBoxPet()
+        public static void AddLunchBoxPet(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.PetCarrier, 1);
+                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.PetCarrier, amount);
             }
         }
 
         /// <summary>
         /// Adding one Lunchbox Starterpack
         /// </summary>
-        public static void AddLunchBoxStarter()
+        public static void AddLunchBoxStarter(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.StarterPack, 1);
+                MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.StarterPack, amount);
             }
         }
     }

@@ -8,8 +8,8 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Shelter</RootNamespace>
-    <AssemblyName>FalloutShelterCheat</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AssemblyName>Fallout</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -218,12 +218,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cheat\CheatOptions.cs" />
     <Compile Include="Dweller\DwellerOptions.cs" />
     <Compile Include="Event\EventOptions.cs" />
     <Compile Include="Inventory\InventoryOptions.cs" />
     <Compile Include="Loader.cs" />
     <Compile Include="LunchBox\LunchboxOptions.cs" />
-    <Compile Include="Main.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

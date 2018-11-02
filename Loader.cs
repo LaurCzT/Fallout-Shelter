@@ -4,39 +4,40 @@ using Shelter.EventOpt;
 using Shelter.InventoryOpt;
 using Shelter.VaultOpt;
 using Shelter.LunchBoxOpt;
+using Shelter.CheatOpt;
 
 namespace Shelter
 {
     public class Loader
     {
-        public static GameObject _loadObject;
+        public static GameObject loadObject;
 
         public static void Load()
         {
-            _loadObject = new GameObject();
+            loadObject = new GameObject();
 
-            // All Componenets.
-            _loadObject.AddComponent<Main>();
-            _loadObject.AddComponent<Menu>();
+            // Main
+            loadObject.AddComponent<Menu>();
+            loadObject.AddComponent<CheatOptions>();
 
-            _loadObject.AddComponent<DwellerOptions>();
-            _loadObject.AddComponent<EventOptions>();
-            _loadObject.AddComponent<InventoryOptions>();
-            _loadObject.AddComponent<VaultOptions>();
-            _loadObject.AddComponent<LunchboxOptions>();
+            // Options
+            loadObject.AddComponent<DwellerOptions>();
+            loadObject.AddComponent<EventOptions>();
+            loadObject.AddComponent<InventoryOptions>();
+            loadObject.AddComponent<VaultOptions>();
+            loadObject.AddComponent<LunchboxOptions>();
 
-
-            Object.DontDestroyOnLoad(_loadObject);
+            Object.DontDestroyOnLoad(loadObject);
         }
 
         public static void Unload()
         {
-            _Unload();
+            UnloadCheat();
         }
 
-        public static void _Unload()
+        public static void UnloadCheat()
         {
-            Object.Destroy(_loadObject);
+            Object.Destroy(loadObject);
         }
     }
 }

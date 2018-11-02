@@ -17,33 +17,33 @@ namespace Shelter.VaultOpt
         /// <summary>
         /// Adds 5000 energy to the vault
         /// </summary>
-        public static void InfiniteEnergy()
+        public static void InfiniteEnergy(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.Energy, 5000));
+                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.Energy, amount));
             }
         }
 
         /// <summary>
         /// Adds 5000 food to the vault
         /// </summary>
-        public static void InfiniteFood()
+        public static void InfiniteFood(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.Food, 5000));
+                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.Food, amount));
             }
         }
 
         /// <summary>
         /// Adds 5000 water to the vault
         /// </summary>
-        public static void InfiniteWater()
+        public static void InfiniteWater(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.Water, 5000));
+                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.Water, amount));
 
             }
         }
@@ -51,44 +51,44 @@ namespace Shelter.VaultOpt
         /// <summary>
         /// Adds 5000 Nuka Cola
         /// </summary>
-        public static void AddNukaCola()
+        public static void AddNukaCola(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.Nuka, 5000));
+                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.Nuka, amount));
             }
         }
 
         /// <summary>
         /// Adds 100 Nuka Cola Quantum
         /// </summary>
-        public static void AddNukaColaQuantum()
+        public static void AddNukaColaQuantum(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.NukaColaQuantum, 100));
+                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.NukaColaQuantum, amount));
             }
         }
 
         /// <summary>
         /// Adds 50 RedAway 
         /// </summary>
-        public static void AddRedAway()
+        public static void AddRedAway(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.RadAway, 50));
+                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.RadAway, amount));
             }
         }
 
         /// <summary>
         /// Adds 50 Stimpacks 
         /// </summary>
-        public static void AddStimPack()
+        public static void AddStimPack(int amount)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.StimPack, 50));
+                MonoSingleton<Vault>.Instance.Storage.AddResource(new GameResources(EResource.StimPack, amount));
             }
         }
 
@@ -127,11 +127,11 @@ namespace Shelter.VaultOpt
         /// <summary>
         /// Set the max Dwellers to 9000
         /// </summary>
-        public static void SetDwellersToThousand()
+        public static void SetDwellersToThousand(int maxDweller)
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                MonoSingleton<Vault>.Instance.MaxDwellers = 9000;
+                MonoSingleton<Vault>.Instance.MaxDwellers = maxDweller;
             }
         }
 
