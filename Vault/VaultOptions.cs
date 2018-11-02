@@ -123,7 +123,7 @@ namespace Shelter.VaultOpt
                 }
             }
         }
-
+        
         /// <summary>
         /// Set the max Dwellers to 9000
         /// </summary>
@@ -135,24 +135,5 @@ namespace Shelter.VaultOpt
             }
         }
 
-        /// <summary>
-        /// Updates this instance.
-        /// </summary>
-        ///
-        /*
-        private void Update()
-        {
-            Validator.Validator.IsInVault();
-
-            if (Options.AdjustDwellers)
-            {
-                baseMaxDwellers = MonoSingleton<Vault>.Instance.MaxDwellers = baseMaxDwellers * Options.MaxDwellersMultiplier;
-            }
-            else
-            {
-                GameStandardValues();
-            }
-        }
-        */
     }
 }
