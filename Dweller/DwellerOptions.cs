@@ -4,9 +4,6 @@ namespace Shelter.DwellerOpt
 {
     public class DwellerOptions : MonoBehaviour
     {
-
-        private int baseHappiness;
-
         /// <summary>
         /// Set the Dwellers to be always happy
         /// </summary>
@@ -19,11 +16,6 @@ namespace Shelter.DwellerOpt
                     person.Happiness.AddHappiness(1000);
                 }
             }
-        }
-
-        public static void AdjustDwellerHappiness()
-        {
-
         }
 
         /// <summary>
@@ -215,7 +207,7 @@ namespace Shelter.DwellerOpt
             {
                 foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
                 {
-                    if (Options.SetDwellerRunningSpeed)
+                    if (Options.EnableSpeedDwellers)
                     {
                         person.m_runningSpeed = baseRunningSpeed * Options.RunningSpeedMultiplier;
                     }
@@ -230,7 +222,7 @@ namespace Shelter.DwellerOpt
             {
                 foreach (Dweller person in MonoSingleton<DwellerManager>.Instance.Dwellers)
                 {
-                    if (Options.SetDwellerWalkingSpeed)
+                    if (Options.EnableSpeedDwellers)
                     {
                         person.m_walkingSpeed = baseWalkSpeed * Options.WalkingSpeedMultiplier;
                     }

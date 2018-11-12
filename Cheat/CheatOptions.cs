@@ -21,17 +21,17 @@ namespace Shelter.CheatOpt
                 Loader.Unload();
             }
 
-            if(Input.GetKey(KeyCode.F1))
+            if(Input.GetKey(KeyCode.F7))
             {
                 VaultOptions.InfiniteEnergy(5000);
             }
 
-            if (Input.GetKey(KeyCode.F2))
+            if (Input.GetKey(KeyCode.F8))
             {
                 VaultOptions.InfiniteFood(5000);
             }
 
-            if (Input.GetKey(KeyCode.F3))
+            if (Input.GetKey(KeyCode.F9))
             {
                 VaultOptions.InfiniteWater(5000);
             }

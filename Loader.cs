@@ -5,6 +5,7 @@ using Shelter.InventoryOpt;
 using Shelter.VaultOpt;
 using Shelter.LunchBoxOpt;
 using Shelter.CheatOpt;
+using Shelter.VisualOpt;
 
 namespace Shelter
 {
@@ -26,6 +27,7 @@ namespace Shelter
             loadObject.AddComponent<InventoryOptions>();
             loadObject.AddComponent<VaultOptions>();
             loadObject.AddComponent<LunchboxOptions>();
+            loadObject.AddComponent<VisualOptions>();
 
             Object.DontDestroyOnLoad(loadObject);
         }

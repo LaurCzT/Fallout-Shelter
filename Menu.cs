@@ -5,29 +5,20 @@ using Shelter.EventOpt;
 using Shelter.InventoryOpt;
 using Shelter.VaultOpt;
 using Shelter.LunchBoxOpt;
+using Shelter.VisualOpt;
 
 namespace Shelter
 {
     public class Menu : MonoBehaviour
     {
-        /*
-        public float hideTextDuration;
-        // private bool shouldCheckInput = true;
-        private bool shouldShowText = true;
 
-        private IEnumerator WaitAndMakeTextDisappear(float waitTimeInSeconds)
-        {
-            yield return new WaitForSeconds(2);
-            shouldShowText = true;
-        }
-        */
-
-        private Rect _window;
-        private Rect _window2;
-        private Rect _window3;
-        private Rect _window4;
-        private Rect _window5;
-        private Rect _window6;
+        private Rect MainWindow;
+        private Rect DwellerWindow;
+        private Rect EventWindow;
+        private Rect InventoryWindow;
+        private Rect VaultWindow;
+        private Rect LunchboxWindow;
+        private Rect VisualWindow;
 
         public bool Visible = true;
         public bool DwellerVisible = false;
@@ -35,81 +26,67 @@ namespace Shelter
         public bool InventoryVisble = false;
         public bool VaultVisible = false;
         public bool LunchBoxVisible = false;
+        public bool VisualVisible = false;
 
-        /// <summary>
-        /// 
-        /// </summary>
         public void Start()
         {
-
-            // Main Menu
-            _window = new Rect(10f, 10f, 250f, 150f);
-
-            // Dweller Options
-            _window2 = new Rect(10f, 10f, 250f, 150f);
-
-            // Eevent Options
-            _window3 = new Rect(10f, 10f, 250f, 150f);
-
-            // Inventory Options
-            _window4 = new Rect(10f, 10f, 250f, 150f);
-
-            // Vault Options
-            _window5 = new Rect(10f, 10f, 250f, 150f);
-
-            // Pets Options
-            _window6 = new Rect(10f, 10f, 250f, 150f);
-        }
-
-        private void ToggleMenu()
-        {
-            if(Input.GetKeyDown(KeyCode.Insert))
-            {
-                Visible = !Visible;
-            }
+            MainWindow = new Rect(10f, 10f, 250f, 150f);
+            DwellerWindow = new Rect(10f, 10f, 250f, 150f);
+            EventWindow = new Rect(10f, 10f, 250f, 150f);
+            InventoryWindow = new Rect(10f, 10f, 250f, 150f);
+            VaultWindow = new Rect(10f, 10f, 250f, 150f);
+            LunchboxWindow = new Rect(10f, 10f, 250f, 150f);
+            VisualWindow = new Rect(10f, 10f, 50f, 50f);
         }
 
         private void Update()
         {
-            ToggleMenu();
+            if (Input.GetKeyDown(KeyCode.Insert))
+                Visible = !Visible;
+
+            if (Input.GetKeyDown(KeyCode.Delete))
+                Loader.Unload();
         }
 
 
         private void OnGUI()
         {
-
             if (!Visible)
             {
                 return;
             }
 
-            _window = GUILayout.Window(0, _window, new GUI.WindowFunction(Draw), "Fallout Shelter", new GUILayoutOption[0]);
+            MainWindow = GUILayout.Window(0, MainWindow, new GUI.WindowFunction(Draw), "Fallout Shelter", new GUILayoutOption[0]);
 
             if (DwellerVisible)
             {
-                _window2 = GUILayout.Window(1, _window2, new GUI.WindowFunction(DrawDwellerOptions), "Dweller Options", new GUILayoutOption[0]);
+                DwellerWindow = GUILayout.Window(1, DwellerWindow, new GUI.WindowFunction(DrawDwellerOptions), "Dweller Options", new GUILayoutOption[0]);
             }
 
             if (EventVisible)
             {
-                _window3 = GUILayout.Window(2, _window3, new GUI.WindowFunction(DrawEventOptions), "Event Options", new GUILayoutOption[0]);
+                EventWindow = GUILayout.Window(2, EventWindow, new GUI.WindowFunction(DrawEventOptions), "Event Options", new GUILayoutOption[0]);
             }
 
             if (InventoryVisble)
             {
-                _window4 = GUILayout.Window(3, _window4, new GUI.WindowFunction(DrawInventoryOptions), "Inventory Options", new GUILayoutOption[0]);
+                InventoryWindow = GUILayout.Window(3, InventoryWindow, new GUI.WindowFunction(DrawInventoryOptions), "Inventory Options", new GUILayoutOption[0]);
             }
 
             if (VaultVisible)
             {
-                _window5 = GUILayout.Window(4, _window5, new GUI.WindowFunction(DrawVaultOptions), "Vault Options", new GUILayoutOption[0]);
+                VaultWindow = GUILayout.Window(4, VaultWindow, new GUI.WindowFunction(DrawVaultOptions), "Vault Options", new GUILayoutOption[0]);
             }
 
             if (LunchBoxVisible)
             {
-                _window6 = GUILayout.Window(5, _window6, new GUI.WindowFunction(DrawLunchBoxOptions), "Pet Options", new GUILayoutOption[0]);
+                LunchboxWindow = GUILayout.Window(5, LunchboxWindow, new GUI.WindowFunction(DrawLunchBoxOptions), "LunchBox Options", new GUILayoutOption[0]);
             }
 
+            if (VisualVisible)
+            {
+                VisualWindow = GUILayout.Window(6, VisualWindow, new GUI.WindowFunction(DrawVisualOptions), "Visual Options", new GUILayoutOption[0]);
+            }
         }
 
         /// <summary>
@@ -120,41 +97,50 @@ namespace Shelter
         {
             Options.Watermark = GUILayout.Toggle(Options.Watermark, "Watermark", new GUILayoutOption[0]);
 
+            GUILayout.Label("Insert for Menu", new GUILayoutOption[0]);
+            GUILayout.Label("Delete to unload the cheat", new GUILayoutOption[0]);
+
             GUILayout.Space(+10f);
 
             if (GUILayout.Button("Dweller Options", new GUILayoutOption[0]))
             {
-                _window2.x = _window.width + 20f;
+                DwellerWindow.x = MainWindow.width + 20f;
                 DwellerVisible = !DwellerVisible;
             }
 
             if (GUILayout.Button("Event Options", new GUILayoutOption[0]))
             {
-                _window3.x = _window.width + 40f;
+                EventWindow.x = MainWindow.width + 290f;
                 EventVisible = !EventVisible;
             }
 
             if (GUILayout.Button("Inventory Options", new GUILayoutOption[0]))
             {
-                _window4.x = _window3.width + 80f;
+                InventoryWindow.x = MainWindow.width + 290f;
+                InventoryWindow.y = EventWindow.width - 75f;
                 InventoryVisble = !InventoryVisble;
             }
 
             if (GUILayout.Button("Vault Options", new GUILayoutOption[0]))
             {
-                _window5.x = _window4.width + 20f;
-                _window5.y = _window4.width + 40f;
+                VaultWindow.x = InventoryWindow.width + 580f;
                 VaultVisible = !VaultVisible;
             }
 
             if (GUILayout.Button("Lunchbox Options", new GUILayoutOption[0]))
             {
-                _window5.x = _window4.width + 80f;
-                _window5.y = _window4.width + 40f;
+                LunchboxWindow.y = MainWindow.width + 80f;
                 LunchBoxVisible = !LunchBoxVisible;
             }
 
-            GUILayout.Space(5f);
+            if (GUILayout.Button("Visual Options", new GUILayoutOption[0]))
+            {
+                VisualWindow.x = VaultWindow.width + 580f;
+                VisualWindow.y = VaultWindow.width + 80f;
+                VisualVisible = !VisualVisible;
+            }
+
+            GUILayout.Space(20f);
 
             if (GUILayout.Button("Unload", new GUILayoutOption[0]))
             {
@@ -198,7 +184,6 @@ namespace Shelter
 
             if (GUILayout.Button("Level Up all Dwellers", new GUILayoutOption[0]) )
             {
-                //GUI.Label(new Rect(20, Screen.height / 2f - 7f, 200, 60), "Level up all Dwellers Clicked");
                 DwellerOptions.LevelUpAllDwellers();
             }
 
@@ -239,17 +224,19 @@ namespace Shelter
 
             GUILayout.Space(+15f);
 
+            GUILayout.Label("Experiential (Reset your game to fix it)", new GUILayoutOption[0]);
+
             Options.EnableSpeedDwellers = GUILayout.Toggle(Options.EnableSpeedDwellers, "Enable Speedhack for Dwellers", new GUILayoutOption[0]);
 
             GUILayout.Space(+5f);
 
-            Options.SetDwellerRunningSpeed = GUILayout.Toggle(Options.SetDwellerRunningSpeed, "Set Speed For Running Dwellers {0}", new GUILayoutOption[0]);
-            Options.RunningSpeedMultiplier = Mathf.Round(GUILayout.HorizontalSlider(Options.RunningSpeedMultiplier, 1.3f, 50f, new GUILayoutOption[0]) * 50f) / 50f;
+            GUILayout.Label(string.Format("Running Speed {0}", Options.RunningSpeedMultiplier), new GUILayoutOption[0]);
+            Options.RunningSpeedMultiplier = Mathf.Round(GUILayout.HorizontalSlider(Options.RunningSpeedMultiplier, 1f, 50f, new GUILayoutOption[0]) * 50f) / 50f;
 
             GUILayout.Space(+5f);
 
-            Options.SetDwellerWalkingSpeed = GUILayout.Toggle(Options.SetDwellerWalkingSpeed, "Set Speed For Walking Dwellers {0}", new GUILayoutOption[0]);
-            Options.WalkingSpeedMultiplier = Mathf.Round(GUILayout.HorizontalSlider(Options.WalkingSpeedMultiplier, 4f, 50f, new GUILayoutOption[0]) * 50f) / 50f;
+            GUILayout.Label(string.Format("Walking Speed {0}", Options.WalkingSpeedMultiplier), new GUILayoutOption[0]);
+            Options.WalkingSpeedMultiplier = Mathf.Round(GUILayout.HorizontalSlider(Options.WalkingSpeedMultiplier, 1f, 50f, new GUILayoutOption[0]) * 50f) / 50f;
 
             GUI.DragWindow();
         }
@@ -423,6 +410,17 @@ namespace Shelter
             {
                 LunchboxOptions.AddLunchBoxStarter(1);
             }
+
+            GUI.DragWindow();
+        }
+
+        private void DrawVisualOptions(int id)
+        {
+            if (Options.DwellerESP)
+            {
+                VisualOptions.DrawDwellers();
+            }
+            Options.DwellerESP = GUILayout.Toggle(Options.DwellerESP, "Dweller ESP", new GUILayoutOption[0]);
 
             GUI.DragWindow();
         }

@@ -5,6 +5,9 @@
         // Cheat
         public static bool Watermark = true;
 
+        // Visual
+        public static bool DwellerESP = false;
+
         // Dweller Options
         public static bool AlwaysHappy = false;
         public static bool SetDwellerHappiness = false;

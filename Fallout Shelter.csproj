@@ -227,7 +227,9 @@
     <Compile Include="Menu.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Render.cs" />
     <Compile Include="Vault\VaultOptions.cs" />
+    <Compile Include="Visual\VisualOptions.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

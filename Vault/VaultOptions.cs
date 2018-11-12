@@ -134,25 +134,5 @@ namespace Shelter.VaultOpt
                 MonoSingleton<Vault>.Instance.MaxDwellers = maxDweller;
             }
         }
-
-        /// <summary>
-        /// Updates this instance.
-        /// </summary>
-        ///
-        /*
-        private void Update()
-        {
-            Validator.Validator.IsInVault();
-
-            if (Options.AdjustDwellers)
-            {
-                baseMaxDwellers = MonoSingleton<Vault>.Instance.MaxDwellers = baseMaxDwellers * Options.MaxDwellersMultiplier;
-            }
-            else
-            {
-                GameStandardValues();
-            }
-        }
-        */
     }
 }
