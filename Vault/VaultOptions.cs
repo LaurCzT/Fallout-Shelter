@@ -123,7 +123,7 @@ namespace Shelter.VaultOpt
                 }
             }
         }
-
+        
         /// <summary>
         /// Set the max Dwellers to 9000
         /// </summary>
