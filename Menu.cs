@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Shelter.DwellerOpt;
 using Shelter.EventOpt;
@@ -11,7 +11,6 @@ namespace Shelter
 {
     public class Menu : MonoBehaviour
     {
-
         private Rect MainWindow;
         private Rect DwellerWindow;
         private Rect EventWindow;
@@ -48,45 +47,30 @@ namespace Shelter
                 Loader.Unload();
         }
 
-
         private void OnGUI()
         {
             if (!Visible)
-            {
                 return;
-            }
 
             MainWindow = GUILayout.Window(0, MainWindow, new GUI.WindowFunction(Draw), "Fallout Shelter", new GUILayoutOption[0]);
 
             if (DwellerVisible)
-            {
                 DwellerWindow = GUILayout.Window(1, DwellerWindow, new GUI.WindowFunction(DrawDwellerOptions), "Dweller Options", new GUILayoutOption[0]);
-            }
-
+                
             if (EventVisible)
-            {
                 EventWindow = GUILayout.Window(2, EventWindow, new GUI.WindowFunction(DrawEventOptions), "Event Options", new GUILayoutOption[0]);
-            }
 
             if (InventoryVisble)
-            {
                 InventoryWindow = GUILayout.Window(3, InventoryWindow, new GUI.WindowFunction(DrawInventoryOptions), "Inventory Options", new GUILayoutOption[0]);
-            }
 
             if (VaultVisible)
-            {
                 VaultWindow = GUILayout.Window(4, VaultWindow, new GUI.WindowFunction(DrawVaultOptions), "Vault Options", new GUILayoutOption[0]);
-            }
 
             if (LunchBoxVisible)
-            {
                 LunchboxWindow = GUILayout.Window(5, LunchboxWindow, new GUI.WindowFunction(DrawLunchBoxOptions), "LunchBox Options", new GUILayoutOption[0]);
-            }
 
             if (VisualVisible)
-            {
                 VisualWindow = GUILayout.Window(6, VisualWindow, new GUI.WindowFunction(DrawVisualOptions), "Visual Options", new GUILayoutOption[0]);
-            }
         }
 
         /// <summary>
@@ -143,9 +127,7 @@ namespace Shelter
             GUILayout.Space(20f);
 
             if (GUILayout.Button("Unload", new GUILayoutOption[0]))
-            {
                 Loader.Unload();
-            }
 
             GUI.DragWindow();
         }
