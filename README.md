@@ -1,9 +1,8 @@
 # Fallout-Shelter
 
 Credits:
-@shv00
-@zet (Tutorial)
-@sagaantheepic (Menu / Cheat Base)
+@B74k <br>
+@zet (Tutorial) <br>
 
 https://www.unknowncheats.me/forum/other-mmorpg-and-strategy/304940-fallout-shelter-hack.html
 
