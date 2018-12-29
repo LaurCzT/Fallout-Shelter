@@ -1,6 +1,6 @@
 # Fallout-Shelter
 
-Credits:
+Credits: <br>
 @B74k <br>
 @zet (Tutorial) <br>
 
