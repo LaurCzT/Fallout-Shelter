@@ -1,11 +1,11 @@
 ﻿using System;
-using UnityEngine;
 
-namespace Shelter.VaultOpt
+namespace Shelter
 {
-    public class VaultOptions : MonoBehaviour
+    public class CVault
     {
         private int baseMaxDwellers;
+
         /// <summary>
         /// Set the standard values of the game.
         /// </summary>
@@ -99,8 +99,10 @@ namespace Shelter.VaultOpt
         {
             if (MonoSingleton<VaultGUIManager>.IsInstanceValid)
             {
-                foreach (ERoomType rooms in Enum.GetValues(typeof(ERoomType)))
+                System.Collections.IList list = Enum.GetValues(typeof(ERoomType));
+                for (int i = 0; i < list.Count; i++)
                 {
+                    ERoomType rooms = (ERoomType)list[i];
                     MonoSingleton<VaultGUIManager>.Instance.m_RoomsBuildWindow.Cheat_UnlockRoom(rooms);
                 }
             }
@@ -113,10 +115,14 @@ namespace Shelter.VaultOpt
         {
             if (MonoSingleton<VaultGUIManager>.IsInstanceValid)
             {
-                foreach (ESpecialTheme themes in Enum.GetValues(typeof(ESpecialTheme)))
+                System.Collections.IList list1 = Enum.GetValues(typeof(ESpecialTheme));
+                for (int i1 = 0; i1 < list1.Count; i1++)
                 {
-                    foreach (ERoomType rooms in Enum.GetValues(typeof(ERoomType)))
+                    ESpecialTheme themes = (ESpecialTheme)list1[i1];
+                    System.Collections.IList list = Enum.GetValues(typeof(ERoomType));
+                    for (int i = 0; i < list.Count; i++)
                     {
+                        ERoomType rooms = (ERoomType)list[i];
                         MonoSingleton<VaultGUIManager>.Instance.m_survivalWindow.CollectedThemes.CraftTheme(rooms, themes);
                     }
                     MonoSingleton<GameParameters>.Instance.Items.CraftParameters.ReInitializeCachedRecipesOnce();

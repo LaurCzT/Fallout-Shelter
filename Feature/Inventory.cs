@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Shelter.InventoryOpt
+﻿namespace Shelter
 {
-    public class InventoryOptions : MonoBehaviour
+    public class Inventory
     {
 
         /// <summary>
@@ -12,7 +8,7 @@ namespace Shelter.InventoryOpt
         /// </summary>
         public static void SetVaultStorage(int amount)
         {
-            if (MonoSingleton<Vault>.IsInstanceValid && Options.SetVaultMaxStorage)
+            if (MonoSingleton<Vault>.IsInstanceValid && Setting.SetVaultMaxStorage)
             {
                 MonoSingleton<Vault>.Instance.Inventory.SetMaxItems(amount);
             }
@@ -25,21 +21,27 @@ namespace Shelter.InventoryOpt
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                foreach (DwellerWeaponItem weapon in MonoSingleton<GameParameters>.Instance.Items.WeaponsList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.WeaponsList.Length; i++)
                 {
+                    DwellerWeaponItem weapon = MonoSingleton<GameParameters>.Instance.Items.WeaponsList[i];
                     DwellerItem item = new DwellerItem(EItemType.Weapon, weapon.GetAsDwellerItem().Id);
+
                     MonoSingleton<Vault>.Instance.Inventory.AddItem(item);
                 }
 
-                foreach (DwellerOutfitItem outfit in MonoSingleton<GameParameters>.Instance.Items.OutfitList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.OutfitList.Length; i++)
                 {
+                    DwellerOutfitItem outfit = MonoSingleton<GameParameters>.Instance.Items.OutfitList[i];
                     DwellerItem item = new DwellerItem(EItemType.Outfit, outfit.GetAsDwellerItem().Id);
+
                     MonoSingleton<Vault>.Instance.Inventory.AddItem(item);
                 }
 
-                foreach (DwellerJunkItem junk in MonoSingleton<GameParameters>.Instance.Items.JunksList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.JunksList.Length; i++)
                 {
+                    DwellerJunkItem junk = MonoSingleton<GameParameters>.Instance.Items.JunksList[i];
                     DwellerItem item = new DwellerItem(EItemType.Junk, junk.GetAsDwellerItem().Id);
+
                     MonoSingleton<Vault>.Instance.Inventory.AddItem(item);
                 }
             }
@@ -52,9 +54,11 @@ namespace Shelter.InventoryOpt
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                foreach (DwellerWeaponItem weapon in MonoSingleton<GameParameters>.Instance.Items.WeaponsList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.WeaponsList.Length; i++)
                 {
+                    DwellerWeaponItem weapon = MonoSingleton<GameParameters>.Instance.Items.WeaponsList[i];
                     DwellerItem item = new DwellerItem(EItemType.Weapon, weapon.GetAsDwellerItem().Id);
+
                     MonoSingleton<Vault>.Instance.Inventory.AddItem(item);
                 }
             }
@@ -67,9 +71,11 @@ namespace Shelter.InventoryOpt
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                foreach (DwellerOutfitItem outfit in MonoSingleton<GameParameters>.Instance.Items.OutfitList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.OutfitList.Length; i++)
                 {
+                    DwellerOutfitItem outfit = MonoSingleton<GameParameters>.Instance.Items.OutfitList[i];
                     DwellerItem item = new DwellerItem(EItemType.Outfit, outfit.GetAsDwellerItem().Id);
+
                     MonoSingleton<Vault>.Instance.Inventory.AddItem(item);
                 }
             }
@@ -82,9 +88,11 @@ namespace Shelter.InventoryOpt
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                foreach (DwellerJunkItem junk in MonoSingleton<GameParameters>.Instance.Items.JunksList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.JunksList.Length; i++)
                 {
+                    DwellerJunkItem junk = MonoSingleton<GameParameters>.Instance.Items.JunksList[i];
                     DwellerItem item = new DwellerItem(EItemType.Junk, junk.GetAsDwellerItem().Id);
+
                     MonoSingleton<Vault>.Instance.Inventory.AddItem(item);
                 }
             }
@@ -98,8 +106,9 @@ namespace Shelter.InventoryOpt
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
                 float bestDamage = 20;
-                foreach (DwellerWeaponItem weapon in MonoSingleton<GameParameters>.Instance.Items.WeaponsList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.WeaponsList.Length; i++)
                 {
+                    DwellerWeaponItem weapon = MonoSingleton<GameParameters>.Instance.Items.WeaponsList[i];
                     if (bestDamage < weapon.AverageDamage)
                     {
                         DwellerItem item = new DwellerItem(EItemType.Weapon, weapon.GetAsDwellerItem().Id);
@@ -117,8 +126,9 @@ namespace Shelter.InventoryOpt
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
                 float bestPrice = 100;
-                foreach (DwellerOutfitItem outfit in MonoSingleton<GameParameters>.Instance.Items.OutfitList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.OutfitList.Length; i++)
                 {
+                    DwellerOutfitItem outfit = MonoSingleton<GameParameters>.Instance.Items.OutfitList[i];
                     if (bestPrice < outfit.SellPrice)
                     {
                         DwellerItem item = new DwellerItem(EItemType.Outfit, outfit.GetAsDwellerItem().Id);
@@ -135,8 +145,9 @@ namespace Shelter.InventoryOpt
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                foreach (DwellerWeaponItem weapon in MonoSingleton<GameParameters>.Instance.Items.WeaponsList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.WeaponsList.Length; i++)
                 {
+                    DwellerWeaponItem weapon = MonoSingleton<GameParameters>.Instance.Items.WeaponsList[i];
                     if (weapon.ItemRarity == EItemRarity.Legendary)
                     {
                         DwellerItem item = new DwellerItem(EItemType.Weapon, weapon.GetAsDwellerItem().Id);
@@ -153,8 +164,9 @@ namespace Shelter.InventoryOpt
         {
             if (MonoSingleton<Vault>.IsInstanceValid)
             {
-                foreach (DwellerOutfitItem outfit in MonoSingleton<GameParameters>.Instance.Items.OutfitList)
+                for (int i = 0; i < MonoSingleton<GameParameters>.Instance.Items.OutfitList.Length; i++)
                 {
+                    DwellerOutfitItem outfit = MonoSingleton<GameParameters>.Instance.Items.OutfitList[i];
                     if (outfit.ItemRarity == EItemRarity.Legendary)
                     {
                         DwellerItem item = new DwellerItem(EItemType.Outfit, outfit.GetAsDwellerItem().Id);

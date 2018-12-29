@@ -1,12 +1,9 @@
 ﻿namespace Shelter
 {
-    public static class Options
+    public class Setting
     {
         // Cheat
         public static bool Watermark = true;
-
-        // Visual
-        public static bool DwellerESP = false;
 
         // Dweller Options
         public static bool AlwaysHappy = false;
@@ -16,13 +13,6 @@
         public static bool SetDwellerMaxHealth = false;
         public static bool SetBiggerCriticalHitMeter = false;
         public static bool SetHigherCriticalHit = false;
-
-        public static bool EnableSpeedDwellers = false;
-        public static bool SetDwellerRunningSpeed = false;
-        public static bool SetDwellerWalkingSpeed = false;
-        public static float RunningSpeedMultiplier = 1f;
-        public static float WalkingSpeedMultiplier = 1f;
-
 
         // Inventory Options
         public static bool SetVaultMaxStorage = false;

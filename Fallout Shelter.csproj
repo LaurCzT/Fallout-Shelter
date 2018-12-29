@@ -218,18 +218,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cheat\CheatOptions.cs" />
-    <Compile Include="Dweller\DwellerOptions.cs" />
-    <Compile Include="Event\EventOptions.cs" />
-    <Compile Include="Inventory\InventoryOptions.cs" />
+    <Compile Include="Feature\Dweller.cs" />
+    <Compile Include="Feature\Event.cs" />
+    <Compile Include="Feature\Inventory.cs" />
     <Compile Include="Loader.cs" />
-    <Compile Include="LunchBox\LunchboxOptions.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="Options.cs" />
+    <Compile Include="Feature\Lunchbox.cs" />
+    <Compile Include="UI\Menu.cs" />
+    <Compile Include="Utils\Setting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Render.cs" />
-    <Compile Include="Vault\VaultOptions.cs" />
-    <Compile Include="Visual\VisualOptions.cs" />
+    <Compile Include="Feature\Vault.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

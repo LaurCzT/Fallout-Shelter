@@ -1,45 +1,29 @@
 ﻿using UnityEngine;
-using Shelter.DwellerOpt;
-using Shelter.EventOpt;
-using Shelter.InventoryOpt;
-using Shelter.VaultOpt;
-using Shelter.LunchBoxOpt;
-using Shelter.CheatOpt;
-using Shelter.VisualOpt;
 
 namespace Shelter
 {
     public class Loader
     {
-        public static GameObject loadObject;
+        // Declare our gameobject
+        public static GameObject gameObject;
 
+        // Our loader method
         public static void Load()
         {
-            loadObject = new GameObject();
+            // Create an instance of the GameObject
+            gameObject = new GameObject();
 
-            // Main
-            loadObject.AddComponent<Menu>();
-            loadObject.AddComponent<CheatOptions>();
+            // Adding the monobehaviours components to our GameObject
+            gameObject.AddComponent<UI.Menu>();
 
-            // Options
-            loadObject.AddComponent<DwellerOptions>();
-            loadObject.AddComponent<EventOptions>();
-            loadObject.AddComponent<InventoryOptions>();
-            loadObject.AddComponent<VaultOptions>();
-            loadObject.AddComponent<LunchboxOptions>();
-            loadObject.AddComponent<VisualOptions>();
-
-            Object.DontDestroyOnLoad(loadObject);
+            // Telling unity not to destroy our GameObject on level change
+            Object.DontDestroyOnLoad(gameObject);
         }
 
-        public static void Unload()
+        public static void UnloadGameObject()
         {
-            UnloadCheat();
-        }
-
-        public static void UnloadCheat()
-        {
-            Object.Destroy(loadObject);
+            // Destroy our GameObject
+            Object.Destroy(gameObject);
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-
-namespace Shelter.LunchBoxOpt
+﻿namespace Shelter
 {
-    public class LunchboxOptions : MonoBehaviour
+    public class Lunchbox
     {
         /// <summary>
         /// Adding one regular lunchbox
