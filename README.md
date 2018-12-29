@@ -2,7 +2,7 @@
 
 Credits: <br>
 @B74k <br>
-@zet (Tutorial) <br>
+@Zat (Tutorial) <br>
 
 https://www.unknowncheats.me/forum/other-mmorpg-and-strategy/304940-fallout-shelter-hack.html
 
